@@ -8,10 +8,18 @@ public class Produto {
 
     private String nome;  // ATRIBUTO encapsulado
     private String marca;
-    private double valor; // quero definir que seja != 0
+    //private double valor; // quero definir que seja != 0
+    protected double valor; // tive que mudar devido ProdutoInternacional ter HERDADO e ser diferente
     private Tamanho tamanho;
-    //private String itensInclusos; vou criar LISTA
-    private List<String> itensInclusos;
+
+    // private List<String> itensInclusos; era String e passa para ItemIncluso
+    private List<ItemIncluso> itensInclusos;
+    // Construtor , estrutura: modificador Classe() {} funciona = metodo (passa param)
+    // não tem return , não tem tipo
+    public Produto(String marcaInicial, Tamanho tamanhoInicial) {
+        this.marca = marcaInicial; // quem for dar new Produto tem que informar!!!
+        this.tamanho = tamanhoInicial;
+     }
 
     // METODO para definir valor
     public double getValor() {   // crio METODO para quem for usar "valor"
@@ -47,10 +55,10 @@ public class Produto {
            this.tamanho = novoTamanho;
     }
 
-    public List<String> getItensInclusos() {
+    public List<ItemIncluso> getItensInclusos() {
         return this.itensInclusos;
     }
-    public void setItensInclusos(List<String> novoIten) {
+    public void setItensInclusos(List<ItemIncluso> novoIten) {
         this.itensInclusos = novoIten;
     }
 }
